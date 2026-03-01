@@ -12,7 +12,7 @@
 
     <style>
         :root {
-            /* New color scheme: white background, gold and blue accents */
+            /* light background with gold, white and blue accents */
             --bg-white: #FFFFFF;
             --text-dark: #1E1E1E;
             --gold: #D4AF37;
@@ -51,7 +51,15 @@
             font-size: 1.8rem; 
             color: var(--text-dark) !important; 
             text-decoration: none; 
-            letter-spacing: 2px; 
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 42px;
+            width: auto;
+            margin-right: 12px;
+            border-radius: 4px;
         }
         .nav-logo span { color: var(--gold); }
         .nav-link {
@@ -61,8 +69,16 @@
             text-transform: uppercase;
             margin: 0 15px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .nav-link i { 
+            font-size: 1.2rem; 
+            margin-right: 5px;
+            color: var(--blue);
         }
         .nav-link:hover { color: var(--blue) !important; }
+        .nav-link:hover i { color: var(--gold); }
 
         /* --- Hero Section --- */
         .hero {
@@ -165,7 +181,7 @@
             background: var(--blue);
             color: white;
         }
-        /* Special for youtube button to keep brand red? but we unify with blue */
+        /* special for youtube icon */
         .btn-outline-luxury i.fa-youtube { color: #FF0000; }
         .btn-outline-luxury:hover i.fa-youtube { color: white; }
 
@@ -210,7 +226,7 @@
             position: fixed;
             bottom: 30px; right: 30px;
             width: 60px; height: 60px;
-            background: #25D366;  /* keep original green for recognition */
+            background: #25D366;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             color: white; font-size: 1.8rem;
@@ -275,6 +291,7 @@
             .hero-title { font-size: 3.2rem; }
             .navbar-brand { font-size: 1.2rem; }
             .btn-luxury, .btn-outline-luxury { padding: 12px 24px; }
+            .nav-logo img { height: 32px; }
         }
     </style>
 </head>
@@ -282,7 +299,11 @@
 
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="nav-logo" href="#">HEMA <span>DENTAL</span></a>
+            <a class="nav-logo" href="#">
+                <!-- small logo image (logo.jpg) added before text -->
+                <img src="logo.jpg" alt="Hema Dental Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/42x42?text=Logo';">
+                HEMA <span>DENTAL</span>
+            </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fa-solid fa-bars-staggered" style="color: var(--text-dark);"></i>
             </button>
@@ -291,6 +312,12 @@
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Treatments</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <!-- Instagram link added as an icon -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/hemadentalvlog?igsh=MWpycHl1OGV1OXlubA==" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i><span class="d-none d-lg-inline"> Insta</span>
+                        </a>
+                    </li>
                     <li class="nav-item ms-lg-4 mt-3 mt-lg-0">
                         <a href="tel:+918192876397" class="btn-luxury">CALL NOW</a>
                     </li>
