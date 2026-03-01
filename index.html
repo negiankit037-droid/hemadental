@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hema Dental Clinic | Premium Oral Care Haldwani</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --royal-black: #050505;
+            --champagne: #D4AF37;
+            --surface: #0F0F0F;
+            --soft-gray: #A1A1A1;
+            --pure-white: #FFFFFF;
+        }
+
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--royal-black);
+            color: var(--pure-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .nav-logo { font-family: 'Prata', serif; }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--royal-black); }
+        ::-webkit-scrollbar-thumb { background: var(--champagne); }
+
+        /* --- Navigation --- */
+        .navbar {
+            padding: 20px 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: 0.4s;
+        }
+        .nav-logo { font-size: 1.8rem; color: var(--pure-white) !important; text-decoration: none; letter-spacing: 2px; }
+        .nav-logo span { color: var(--champagne); }
+        .nav-link {
+            color: var(--pure-white) !important;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0 15px;
+        }
+        .nav-link:hover { color: var(--champagne) !important; }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at right, rgba(212, 175, 55, 0.08) 0%, var(--royal-black) 60%);
+            padding-top: 80px;
+        }
+        .hero-title { font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 25px; }
+        .hero-sub { color: var(--champagne); letter-spacing: 6px; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 15px; }
+
+        /* --- Service Cards --- */
+        .category-title { color: var(--champagne); border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 15px; margin-bottom: 40px; margin-top: 60px; letter-spacing: 3px; }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            height: 100%;
+        }
+        .service-card:hover { border-color: var(--champagne); transform: translateY(-10px); background: #151515; }
+        .icon-box { font-size: 2.2rem; color: var(--champagne); margin-bottom: 25px; }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--pure-white); }
+        .service-card p { font-size: 0.9rem; color: var(--soft-gray); font-weight: 300; margin-bottom: 0; }
+
+        /* --- Buttons --- */
+        .btn-luxury {
+            background: var(--champagne);
+            color: var(--royal-black);
+            padding: 16px 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 0;
+            display: inline-block;
+            text-decoration: none;
+            transition: 0.4s;
+            border: 1px solid var(--champagne);
+        }
+        .btn-luxury:hover { background: transparent; color: var(--champagne); }
+
+        /* --- Contact Section --- */
+        .contact-section { padding: 100px 0; background: #080808; border-top: 1px solid rgba(255,255,255,0.05); }
+        .info-label { color: var(--champagne); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 10px; display: block; }
+        .info-val { font-size: 1.2rem; font-weight: 300; margin-bottom: 40px; }
+        .map-frame { height: 450px; border: 1px solid rgba(212, 175, 55, 0.2); filter: grayscale(1) invert(0.9); opacity: 0.8; transition: 0.6s; }
+        .map-frame:hover { opacity: 1; filter: grayscale(0) invert(0); }
+
+        /* --- WhatsApp --- */
+        .wa-float {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 60px; height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.8rem;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .wa-float:hover { transform: scale(1.1); color: white; }
+
+        @media (max-width: 768px) {
+            .hero { text-align: center; }
+            .hero-title { font-size: 3.2rem; }
+            .navbar-brand { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="nav-logo" href="#">HEMA <span>DENTAL</span></a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars-staggered text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Treatments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-4 mt-3 mt-lg-0">
+                        <a href="tel:+918192876397" class="btn-luxury">CALL NOW</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-duration="1200">
+                    <span class="hero-sub">Haldwani's Elite Dental Studio</span>
+                    <h1 class="hero-title">Experience The <br>Art Of Dentistry.</h1>
+                    <p class="lead text-muted mb-5" style="max-width: 600px;">Where cutting-edge technology meets bespoke aesthetic care. Your journey to a perfect smile starts here.</p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="https://wa.me/918192876397" class="btn-luxury">BOOK APPOINTMENT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="services">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5">Exquisite Treatments</h2>
+                <p class="text-muted">A comprehensive range of dental solutions tailored for you.</p>
+            </div>
+
+            <h4 class="category-title" data-aos="fade-right">01. Aesthetic & Cosmetic</h4>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up"><div class="service-card"><i class="fa-solid fa-wand-sparkles icon-box"></i><h3>Teeth Whitening</h3><p>Instant professional brightness.</p></div></div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="service-card"><i class="fa-solid fa-crown icon-box"></i><h3>Veneers & Crowns</h3><p>Flawless smile restoration.</p></div></div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="service-card"><i class="fa-solid fa-gem icon-box"></i><h3>Teeth Reshaping</h3><p>Perfect contouring & balance.</p></div></div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300"><div class="service-card"><i class="fa-solid fa-face-smile icon-box"></i><h3>Bonding</h3><p>Seamless crack & gap repairs.</p></div></div>
+            </div>
+
+            <h4 class="category-title" data-aos="fade-right">02. Advanced & Surgical</h4>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up"><div class="service-card"><i class="fa-solid fa-bolt icon-box"></i><h3>Laser Dentistry</h3><p>Needle-free, painless procedures.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="service-card"><i class="fa-solid fa-microscope icon-box"></i><h3>Root Canals</h3><p>Painless endodontic excellence.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="service-card"><i class="fa-solid fa-screwdriver icon-box"></i><h3>Dental Implants</h3><p>Permanent tooth replacement.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up"><div class="service-card"><i class="fa-solid fa-scalpel icon-box"></i><h3>Oral Surgery</h3><p>Complex surgical expertise.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="service-card"><i class="fa-solid fa-bridge icon-box"></i><h3>Dentures & Bridges</h3><p>Functional tooth restoration.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="service-card"><i class="fa-solid fa-x-ray icon-box"></i><h3>Digital X-Ray</h3><p>High-precision diagnosis.</p></div></div>
+            </div>
+
+            <h4 class="category-title" data-aos="fade-right">03. General Care</h4>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up"><div class="service-card"><i class="fa-solid fa-magnifying-glass icon-box"></i><h3>Checkups</h3><p>Preventive oral assessments.</p></div></div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="service-card"><i class="fa-solid fa-sparkles icon-box"></i><h3>Teeth Cleaning</h3><p>Professional hygiene & scaling.</p></div></div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="service-card"><i class="fa-solid fa-child icon-box"></i><h3>Pediatrics</h3><p>Gentle care for young smiles.</p></div></div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300"><div class="service-card"><i class="fa-solid fa-shield-virus icon-box"></i><h3>Fillings & Sealants</h3><p>Protection against decay.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up"><div class="service-card"><i class="fa-solid fa-shield-halved icon-box"></i><h3>Mouth Guards</h3><p>Custom-fit protection.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="service-card"><i class="fa-solid fa-tooth icon-box"></i><h3>Extractions</h3><p>Safe & painless removals.</p></div></div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="service-card"><i class="fa-solid fa-globe icon-box"></i><h3>Online Booking</h3><p>Digital scheduling 24/7.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <h2 class="display-5 mb-5">Location & <br>Hours</h2>
+                    <span class="info-label">CLINIC ADDRESS</span>
+                    <p class="info-val">Bareilly - Nainital Rd, Gorapadao, Choraha,<br>Haldwani, Uttarakhand 263139</p>
+                    
+                    <span class="info-label">TIMINGS</span>
+                    <p class="info-val">Everyday: 10:00 AM — 07:00 PM</p>
+                    
+                    <span class="info-label">RESERVATION</span>
+                    <p class="info-val">+91 81928 76397</p>
+                </div>
+                <div class="col-lg-7" data-aos="zoom-in">
+                    <div class="map-frame">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3484.77317730602!2d79.52975267527633!3d29.1419357608889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a0910037a35399%3A0x6b42b91959714ca!2sHema%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1709123456789" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/918192876397" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="py-5 text-center border-top border-dark">
+        <p class="small text-muted mb-0">© 2026 HEMA DENTAL CLINIC | DESIGNED BY AI FOR EXCELLENCE</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        // Navbar Scroll Effect
+        window.onscroll = function() {
+            let nav = document.querySelector(".navbar");
+            if (window.pageYOffset > 50) nav.style.padding = "12px 0";
+            else nav.style.padding = "20px 0";
+        };
+    </script>
+</body>
+</html>
