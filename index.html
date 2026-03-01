@@ -94,6 +94,24 @@
         }
         .btn-luxury:hover { background: transparent; color: var(--champagne); }
 
+        /* --- Outline button variant for consult / youtube --- */
+        .btn-outline-luxury {
+            background: transparent;
+            color: var(--champagne);
+            border: 1px solid var(--champagne);
+            padding: 16px 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 0;
+            display: inline-block;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        .btn-outline-luxury:hover {
+            background: var(--champagne);
+            color: var(--royal-black);
+        }
+
         /* --- Contact Section --- */
         .contact-section { padding: 100px 0; background: #080808; border-top: 1px solid rgba(255,255,255,0.05); }
         .info-label { color: var(--champagne); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 10px; display: block; }
@@ -117,10 +135,57 @@
         }
         .wa-float:hover { transform: scale(1.1); color: white; }
 
+        /* --- Modal custom styles --- */
+        .modal-content {
+            background-color: var(--surface);
+            border: 1px solid var(--champagne);
+            border-radius: 0;
+        }
+        .modal-header {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.5rem;
+        }
+        .modal-title {
+            color: var(--champagne);
+            font-family: 'Prata', serif;
+            letter-spacing: 1px;
+        }
+        .btn-close-white {
+            filter: invert(1) brightness(2);
+        }
+        .modal-body {
+            padding: 2rem;
+        }
+        .payment-img {
+            max-width: 100%;
+            height: auto;
+            border: 2px dashed var(--champagne);
+            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: #1a1a1a;
+        }
+        .instruction-text {
+            color: var(--pure-white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .instruction-sub {
+            color: var(--soft-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal .btn-luxury {
+            display: inline-block;
+            width: auto;
+            padding: 14px 30px;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             .hero { text-align: center; }
             .hero-title { font-size: 3.2rem; }
             .navbar-brand { font-size: 1.2rem; }
+            .btn-luxury, .btn-outline-luxury { padding: 12px 24px; }
         }
     </style>
 </head>
@@ -154,6 +219,11 @@
                     <p class="lead text-muted mb-5" style="max-width: 600px;">Where cutting-edge technology meets bespoke aesthetic care. Your journey to a perfect smile starts here.</p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
                         <a href="https://wa.me/918192876397" class="btn-luxury">BOOK APPOINTMENT</a>
+                        <a href="#" class="btn-outline-luxury" data-bs-toggle="modal" data-bs-target="#consultModal">ONLINE CONSULT</a>
+                        <!-- YouTube Subscribe Button (opens channel) -->
+                        <a href="https://youtube.com/@hemadental?si=0IjBM7YQBAzlrj2F" class="btn-outline-luxury" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube me-2"></i>SUBSCRIBE
+                        </a>
                     </div>
                 </div>
             </div>
@@ -220,6 +290,35 @@
             </div>
         </div>
     </section>
+
+    <!-- Online Consultation Modal (pay.jpg + WhatsApp redirect) -->
+    <div class="modal fade" id="consultModal" tabindex="-1" aria-labelledby="consultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="consultModalLabel">📋 Online Consultation</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- Payment image (pay.jpg) -->
+                    <img src="pay.jpg" alt="Payment QR code - scan to pay ₹200" class="payment-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x400?text=pay.jpg+(Sample+QR)';">
+                    
+                    <!-- Bilingual instructions -->
+                    <p class="instruction-text">₹200 भुगतान करने के बाद स्क्रीनशॉट व्हाट्सएप पर भेजें</p>
+                    <p class="instruction-sub">After paying ₹200, send screenshot on WhatsApp</p>
+                    
+                    <!-- WhatsApp button with pre-filled message hint -->
+                    <a href="https://wa.me/918192876397?text=Hello%2C%20I%20have%20paid%20%E2%82%B9200%20for%20online%20consultation.%20Please%20find%20the%20payment%20screenshot%20attached.%20Kindly%20schedule%20my%20consultation." 
+                       class="btn-luxury" 
+                       target="_blank"
+                       rel="noopener noreferrer">
+                       <i class="fab fa-whatsapp me-2"></i>Send Screenshot on WhatsApp
+                    </a>
+                    <p class="mt-3 small text-muted">Tap the button to open WhatsApp. Attach the screenshot and send.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <a href="https://wa.me/918192876397" class="wa-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
