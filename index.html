@@ -12,77 +12,127 @@
 
     <style>
         :root {
-            --royal-black: #050505;
-            --champagne: #D4AF37;
-            --surface: #0F0F0F;
-            --soft-gray: #A1A1A1;
-            --pure-white: #FFFFFF;
+            /* New color scheme: white background, gold and blue accents */
+            --bg-white: #FFFFFF;
+            --text-dark: #1E1E1E;
+            --gold: #D4AF37;
+            --blue: #1E3A8A;          /* deep royal blue */
+            --surface-light: #F8F8F8;
+            --soft-gray: #6c757d;
+            --border-light: rgba(0,0,0,0.08);
         }
 
         /* --- Global Styles --- */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--royal-black);
-            color: var(--pure-white);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
         h1, h2, h3, .nav-logo { font-family: 'Prata', serif; }
 
-        /* --- Custom Scrollbar --- */
+        /* --- Custom Scrollbar (matching gold/blue) --- */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--royal-black); }
-        ::-webkit-scrollbar-thumb { background: var(--champagne); }
+        ::-webkit-scrollbar-track { background: var(--bg-white); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 
         /* --- Navigation --- */
         .navbar {
             padding: 20px 0;
-            background: rgba(5, 5, 5, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid var(--border-light);
             transition: 0.4s;
         }
-        .nav-logo { font-size: 1.8rem; color: var(--pure-white) !important; text-decoration: none; letter-spacing: 2px; }
-        .nav-logo span { color: var(--champagne); }
+        .nav-logo { 
+            font-size: 1.8rem; 
+            color: var(--text-dark) !important; 
+            text-decoration: none; 
+            letter-spacing: 2px; 
+        }
+        .nav-logo span { color: var(--gold); }
         .nav-link {
-            color: var(--pure-white) !important;
+            color: var(--text-dark) !important;
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin: 0 15px;
+            font-weight: 600;
         }
-        .nav-link:hover { color: var(--champagne) !important; }
+        .nav-link:hover { color: var(--blue) !important; }
 
         /* --- Hero Section --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            background: radial-gradient(circle at right, rgba(212, 175, 55, 0.08) 0%, var(--royal-black) 60%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
             padding-top: 80px;
         }
-        .hero-title { font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 25px; }
-        .hero-sub { color: var(--champagne); letter-spacing: 6px; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 15px; }
+        .hero-title { 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            line-height: 0.9; 
+            margin-bottom: 25px; 
+            color: var(--text-dark);
+        }
+        .hero-sub { 
+            color: var(--blue); 
+            letter-spacing: 6px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+            display: block; 
+            margin-bottom: 15px; 
+        }
+        .hero .lead { color: var(--soft-gray) !important; }
 
         /* --- Service Cards --- */
-        .category-title { color: var(--champagne); border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 15px; margin-bottom: 40px; margin-top: 60px; letter-spacing: 3px; }
+        .category-title { 
+            color: var(--blue); 
+            border-bottom: 2px solid var(--gold); 
+            padding-bottom: 15px; 
+            margin-bottom: 40px; 
+            margin-top: 60px; 
+            letter-spacing: 3px; 
+        }
         .service-card {
-            background: var(--surface);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--surface-light);
+            border: 1px solid var(--border-light);
             padding: 40px 30px;
             transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
             height: 100%;
+            border-radius: 4px;
         }
-        .service-card:hover { border-color: var(--champagne); transform: translateY(-10px); background: #151515; }
-        .icon-box { font-size: 2.2rem; color: var(--champagne); margin-bottom: 25px; }
-        .service-card h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--pure-white); }
-        .service-card p { font-size: 0.9rem; color: var(--soft-gray); font-weight: 300; margin-bottom: 0; }
+        .service-card:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-10px); 
+            background: #ffffff;
+            box-shadow: 0 20px 30px -10px rgba(30, 58, 138, 0.15);
+        }
+        .icon-box { 
+            font-size: 2.2rem; 
+            color: var(--blue); 
+            margin-bottom: 25px; 
+        }
+        .service-card h3 { 
+            font-size: 1.3rem; 
+            margin-bottom: 15px; 
+            color: var(--text-dark); 
+        }
+        .service-card p { 
+            font-size: 0.9rem; 
+            color: var(--soft-gray); 
+            font-weight: 300; 
+            margin-bottom: 0; 
+        }
 
         /* --- Buttons --- */
         .btn-luxury {
-            background: var(--champagne);
-            color: var(--royal-black);
+            background: var(--gold);
+            color: #1E1E1E;
             padding: 16px 40px;
             font-weight: 700;
             letter-spacing: 2px;
@@ -90,15 +140,19 @@
             display: inline-block;
             text-decoration: none;
             transition: 0.4s;
-            border: 1px solid var(--champagne);
+            border: 1px solid var(--gold);
         }
-        .btn-luxury:hover { background: transparent; color: var(--champagne); }
+        .btn-luxury:hover { 
+            background: var(--blue); 
+            color: white; 
+            border-color: var(--blue);
+        }
 
-        /* --- Outline button variant for consult / youtube --- */
+        /* Outline button variant for consult / youtube */
         .btn-outline-luxury {
             background: transparent;
-            color: var(--champagne);
-            border: 1px solid var(--champagne);
+            color: var(--blue);
+            border: 1px solid var(--blue);
             padding: 16px 40px;
             font-weight: 700;
             letter-spacing: 2px;
@@ -108,23 +162,55 @@
             transition: 0.4s;
         }
         .btn-outline-luxury:hover {
-            background: var(--champagne);
-            color: var(--royal-black);
+            background: var(--blue);
+            color: white;
         }
+        /* Special for youtube button to keep brand red? but we unify with blue */
+        .btn-outline-luxury i.fa-youtube { color: #FF0000; }
+        .btn-outline-luxury:hover i.fa-youtube { color: white; }
 
         /* --- Contact Section --- */
-        .contact-section { padding: 100px 0; background: #080808; border-top: 1px solid rgba(255,255,255,0.05); }
-        .info-label { color: var(--champagne); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 10px; display: block; }
-        .info-val { font-size: 1.2rem; font-weight: 300; margin-bottom: 40px; }
-        .map-frame { height: 450px; border: 1px solid rgba(212, 175, 55, 0.2); filter: grayscale(1) invert(0.9); opacity: 0.8; transition: 0.6s; }
-        .map-frame:hover { opacity: 1; filter: grayscale(0) invert(0); }
+        .contact-section { 
+            padding: 100px 0; 
+            background: var(--surface-light); 
+            border-top: 1px solid var(--border-light); 
+        }
+        .info-label { 
+            color: var(--gold); 
+            font-size: 0.75rem; 
+            letter-spacing: 3px; 
+            margin-bottom: 10px; 
+            display: block; 
+            font-weight: 600;
+        }
+        .info-val { 
+            font-size: 1.2rem; 
+            font-weight: 300; 
+            margin-bottom: 40px; 
+            color: var(--text-dark);
+        }
+        .map-frame { 
+            height: 450px; 
+            border: 2px solid var(--gold); 
+            opacity: 0.9; 
+            transition: 0.6s; 
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .map-frame:hover { 
+            opacity: 1; 
+            border-color: var(--blue);
+        }
+        .map-frame iframe {
+            filter: grayscale(20%) invert(0%);
+        }
 
-        /* --- WhatsApp --- */
+        /* --- WhatsApp Float --- */
         .wa-float {
             position: fixed;
             bottom: 30px; right: 30px;
             width: 60px; height: 60px;
-            background: #25D366;
+            background: #25D366;  /* keep original green for recognition */
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             color: white; font-size: 1.8rem;
@@ -135,23 +221,25 @@
         }
         .wa-float:hover { transform: scale(1.1); color: white; }
 
-        /* --- Modal custom styles --- */
+        /* --- Modal custom styles (light) --- */
         .modal-content {
-            background-color: var(--surface);
-            border: 1px solid var(--champagne);
-            border-radius: 0;
+            background-color: white;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
         }
         .modal-header {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid var(--border-light);
             padding: 1.5rem;
+            background: var(--surface-light);
         }
         .modal-title {
-            color: var(--champagne);
+            color: var(--blue);
             font-family: 'Prata', serif;
             letter-spacing: 1px;
         }
-        .btn-close-white {
-            filter: invert(1) brightness(2);
+        .btn-close {
+            filter: none;
+            opacity: 0.8;
         }
         .modal-body {
             padding: 2rem;
@@ -159,13 +247,13 @@
         .payment-img {
             max-width: 100%;
             height: auto;
-            border: 2px dashed var(--champagne);
+            border: 2px dashed var(--gold);
             padding: 0.5rem;
             margin-bottom: 1.5rem;
-            background: #1a1a1a;
+            background: #fafafa;
         }
         .instruction-text {
-            color: var(--pure-white);
+            color: var(--text-dark);
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
@@ -174,11 +262,12 @@
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
-        .modal .btn-luxury {
-            display: inline-block;
-            width: auto;
-            padding: 14px 30px;
-            font-size: 0.9rem;
+
+        /* --- Footer --- */
+        footer {
+            background: white;
+            border-top: 1px solid var(--border-light) !important;
+            color: var(--soft-gray);
         }
 
         @media (max-width: 768px) {
@@ -195,7 +284,7 @@
         <div class="container">
             <a class="nav-logo" href="#">HEMA <span>DENTAL</span></a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa-solid fa-bars-staggered text-white"></i>
+                <i class="fa-solid fa-bars-staggered" style="color: var(--text-dark);"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
@@ -216,7 +305,7 @@
                 <div class="col-lg-10" data-aos="fade-up" data-aos-duration="1200">
                     <span class="hero-sub">Haldwani's Elite Dental Studio</span>
                     <h1 class="hero-title">Experience The <br>Art Of Dentistry.</h1>
-                    <p class="lead text-muted mb-5" style="max-width: 600px;">Where cutting-edge technology meets bespoke aesthetic care. Your journey to a perfect smile starts here.</p>
+                    <p class="lead mb-5" style="max-width: 600px; color: var(--soft-gray);">Where cutting-edge technology meets bespoke aesthetic care. Your journey to a perfect smile starts here.</p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
                         <a href="https://wa.me/918192876397" class="btn-luxury">BOOK APPOINTMENT</a>
                         <a href="#" class="btn-outline-luxury" data-bs-toggle="modal" data-bs-target="#consultModal">ONLINE CONSULT</a>
@@ -233,7 +322,7 @@
     <section class="py-5" id="services">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5">Exquisite Treatments</h2>
+                <h2 class="display-5" style="color: var(--text-dark);">Exquisite Treatments</h2>
                 <p class="text-muted">A comprehensive range of dental solutions tailored for you.</p>
             </div>
 
@@ -272,7 +361,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5" data-aos="fade-right">
-                    <h2 class="display-5 mb-5">Location & <br>Hours</h2>
+                    <h2 class="display-5 mb-5" style="color: var(--text-dark);">Location & <br>Hours</h2>
                     <span class="info-label">CLINIC ADDRESS</span>
                     <p class="info-val">Bareilly - Nainital Rd, Gorapadao, Choraha,<br>Haldwani, Uttarakhand 263139</p>
                     
@@ -297,7 +386,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="consultModalLabel">📋 Online Consultation</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
                     <!-- Payment image (pay.jpg) -->
@@ -324,8 +413,8 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <footer class="py-5 text-center border-top border-dark">
-        <p class="small text-muted mb-0">© 2026 HEMA DENTAL CLINIC | DESIGNED BY AI FOR EXCELLENCE</p>
+    <footer class="py-5 text-center">
+        <p class="small mb-0" style="color: var(--soft-gray);">© 2026 HEMA DENTAL CLINIC | DESIGNED BY AI FOR EXCELLENCE</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
