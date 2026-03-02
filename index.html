@@ -8,18 +8,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- High-quality fonts: Prata & Inter already included, adding Playfair Display for extra elegance -->
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* light background with gold, white and blue accents */
+            /* Premium color palette */
             --bg-white: #FFFFFF;
             --text-dark: #1E1E1E;
             --gold: #D4AF37;
-            --blue: #1E3A8A;          /* deep royal blue */
+            --gold-light: #f5e7c8;
+            --blue: #1E3A8A;
+            --blue-deep: #0f2350;
             --surface-light: #F8F8F8;
             --soft-gray: #6c757d;
             --border-light: rgba(0,0,0,0.08);
+            --shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+        }
+
+        /* --- Subtle noise texture for premium depth --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4wMjUiIC8+PC9zdmc+');
+            opacity: 0.25;
+            z-index: 9999;
+            mix-blend-mode: multiply;
         }
 
         /* --- Global Styles --- */
@@ -29,14 +48,22 @@
             color: var(--text-dark);
             overflow-x: hidden;
             scroll-behavior: smooth;
+            position: relative;
         }
 
-        h1, h2, h3, .nav-logo { font-family: 'Prata', serif; }
+        h1, h2, h3, .nav-logo { 
+            font-family: 'Prata', serif; 
+            letter-spacing: -0.02em;
+        }
+        .hero-title, .display-5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
 
-        /* --- Custom Scrollbar (matching gold/blue) --- */
-        ::-webkit-scrollbar { width: 8px; }
+        /* --- Custom Scrollbar (gold/blue) --- */
+        ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg-white); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 
         /* --- Navigation --- */
@@ -46,6 +73,7 @@
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-light);
             transition: 0.4s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
         .nav-logo { 
             font-size: 1.8rem; 
@@ -54,12 +82,15 @@
             letter-spacing: 2px;
             display: flex;
             align-items: center;
+            transition: all 0.3s;
         }
+        .nav-logo:hover { transform: scale(1.02); }
         .nav-logo img {
             height: 42px;
             width: auto;
             margin-right: 12px;
             border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
         }
         .nav-logo span { color: var(--gold); }
         .nav-link {
@@ -71,28 +102,55 @@
             font-weight: 600;
             display: flex;
             align-items: center;
+            position: relative;
+            transition: 0.3s;
         }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--blue));
+            transition: width 0.3s;
+        }
+        .nav-link:hover:after { width: 100%; }
         .nav-link i { 
             font-size: 1.2rem; 
             margin-right: 5px;
             color: var(--blue);
+            transition: 0.3s;
         }
         .nav-link:hover { color: var(--blue) !important; }
         .nav-link:hover i { color: var(--gold); }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section with subtle gold gradient overlay --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.08) 0%, #ffffff 70%);
             padding-top: 80px;
+            position: relative;
+        }
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cGF0aCBkPSJNMzAgMTBhMTAgMTAgMCAwIDEgMjAgMCAxMCAxMCAwIDAgMS0yMCAweiIgZmlsbD0iI0Q0QUYzNyIgb3BhY2l0eT0iMC4wMjUiLz48L3N2Zz4=');
+            opacity: 0.4;
+            pointer-events: none;
         }
         .hero-title { 
             font-size: clamp(3rem, 10vw, 6rem); 
             line-height: 0.9; 
             margin-bottom: 25px; 
             color: var(--text-dark);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.02);
         }
         .hero-sub { 
             color: var(--blue); 
@@ -102,52 +160,22 @@
             font-size: 0.8rem; 
             display: block; 
             margin-bottom: 15px; 
+            position: relative;
+            display: inline-block;
+        }
+        .hero-sub:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin-top: 8px;
         }
         .hero .lead { color: var(--soft-gray) !important; }
 
-        /* --- Service Cards --- */
-        .category-title { 
-            color: var(--blue); 
-            border-bottom: 2px solid var(--gold); 
-            padding-bottom: 15px; 
-            margin-bottom: 40px; 
-            margin-top: 60px; 
-            letter-spacing: 3px; 
-        }
-        .service-card {
-            background: var(--surface-light);
-            border: 1px solid var(--border-light);
-            padding: 40px 30px;
-            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            height: 100%;
-            border-radius: 4px;
-        }
-        .service-card:hover { 
-            border-color: var(--gold); 
-            transform: translateY(-10px); 
-            background: #ffffff;
-            box-shadow: 0 20px 30px -10px rgba(30, 58, 138, 0.15);
-        }
-        .icon-box { 
-            font-size: 2.2rem; 
-            color: var(--blue); 
-            margin-bottom: 25px; 
-        }
-        .service-card h3 { 
-            font-size: 1.3rem; 
-            margin-bottom: 15px; 
-            color: var(--text-dark); 
-        }
-        .service-card p { 
-            font-size: 0.9rem; 
-            color: var(--soft-gray); 
-            font-weight: 300; 
-            margin-bottom: 0; 
-        }
-
-        /* --- Buttons --- */
+        /* --- Buttons with micro-flare --- */
         .btn-luxury {
-            background: var(--gold);
+            background: linear-gradient(145deg, var(--gold), #e6c456);
             color: #1E1E1E;
             padding: 16px 40px;
             font-weight: 700;
@@ -156,15 +184,33 @@
             display: inline-block;
             text-decoration: none;
             transition: 0.4s;
-            border: 1px solid var(--gold);
+            border: none;
+            box-shadow: 0 10px 20px -5px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-luxury:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .btn-luxury:hover:before {
+            width: 300px;
+            height: 300px;
         }
         .btn-luxury:hover { 
-            background: var(--blue); 
+            background: linear-gradient(145deg, var(--blue), #2b4b9a);
             color: white; 
-            border-color: var(--blue);
+            box-shadow: 0 15px 30px -5px rgba(30, 58, 138, 0.4);
         }
 
-        /* Outline button variant for consult / youtube */
         .btn-outline-luxury {
             background: transparent;
             color: var(--blue);
@@ -176,20 +222,94 @@
             display: inline-block;
             text-decoration: none;
             transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
+        .btn-outline-luxury:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--blue));
+            transition: left 0.4s;
+            z-index: -1;
+        }
+        .btn-outline-luxury:hover:before { left: 0; }
         .btn-outline-luxury:hover {
-            background: var(--blue);
             color: white;
+            border-color: transparent;
         }
-        /* special for youtube icon */
-        .btn-outline-luxury i.fa-youtube { color: #FF0000; }
+        .btn-outline-luxury i.fa-youtube { color: #FF0000; transition: 0.4s; }
         .btn-outline-luxury:hover i.fa-youtube { color: white; }
+        .btn-outline-luxury i.fa-instagram { color: #c13584; transition: 0.4s; }
+        .btn-outline-luxury:hover i.fa-instagram { color: white; }
 
-        /* --- Contact Section --- */
+        /* --- Service Cards with premium textures --- */
+        .category-title { 
+            color: var(--blue); 
+            border-bottom: 2px solid var(--gold); 
+            padding-bottom: 15px; 
+            margin-bottom: 40px; 
+            margin-top: 60px; 
+            letter-spacing: 3px; 
+            font-size: 1.5rem;
+        }
+        .service-card {
+            background: var(--surface-light);
+            border: 1px solid var(--border-light);
+            padding: 40px 30px;
+            transition: 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
+            height: 100%;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.05);
+        }
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212,175,55,0.02) 0%, rgba(30,58,138,0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+        .service-card:hover:before { opacity: 1; }
+        .service-card:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-12px) scale(1.02);
+            background: #ffffff;
+            box-shadow: var(--shadow), 0 0 0 2px rgba(212,175,55,0.1);
+        }
+        .icon-box { 
+            font-size: 2.5rem; 
+            color: var(--blue); 
+            margin-bottom: 25px; 
+            transition: 0.4s;
+        }
+        .service-card:hover .icon-box {
+            color: var(--gold);
+            transform: scale(1.1);
+        }
+        .service-card h3 { 
+            font-size: 1.3rem; 
+            margin-bottom: 15px; 
+            color: var(--text-dark); 
+            transition: 0.3s;
+        }
+        .service-card:hover h3 { color: var(--blue); }
+
+        /* --- Contact Section with gold accents --- */
         .contact-section { 
             padding: 100px 0; 
-            background: var(--surface-light); 
-            border-top: 1px solid var(--border-light); 
+            background: linear-gradient(145deg, #fafafa, #f0f0f0);
+            border-top: 2px solid var(--gold-light);
+            position: relative;
         }
         .info-label { 
             color: var(--gold); 
@@ -204,47 +324,54 @@
             font-weight: 300; 
             margin-bottom: 40px; 
             color: var(--text-dark);
+            border-left: 3px solid var(--blue);
+            padding-left: 15px;
         }
         .map-frame { 
             height: 450px; 
-            border: 2px solid var(--gold); 
-            opacity: 0.9; 
+            border: 3px solid var(--gold); 
+            opacity: 0.95; 
             transition: 0.6s; 
-            border-radius: 4px;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: var(--shadow);
         }
         .map-frame:hover { 
             opacity: 1; 
             border-color: var(--blue);
-        }
-        .map-frame iframe {
-            filter: grayscale(20%) invert(0%);
+            transform: scale(1.01);
         }
 
-        /* --- WhatsApp Float --- */
+        /* --- WhatsApp Float with gold shimmer --- */
         .wa-float {
             position: fixed;
             bottom: 30px; right: 30px;
-            width: 60px; height: 60px;
-            background: #25D366;
+            width: 65px; height: 65px;
+            background: linear-gradient(145deg, #25D366, #128C7E);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.8rem;
+            color: white; font-size: 2rem;
             z-index: 1000;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
             text-decoration: none;
-            transition: 0.3s;
+            transition: 0.4s;
+            border: 2px solid var(--gold);
         }
-        .wa-float:hover { transform: scale(1.1); color: white; }
+        .wa-float:hover { 
+            transform: scale(1.15) rotate(5deg); 
+            color: white; 
+            border-color: white;
+        }
 
-        /* --- Modal custom styles (light) --- */
+        /* --- Modal refined --- */
         .modal-content {
             background-color: white;
             border: 2px solid var(--gold);
-            border-radius: 4px;
+            border-radius: 16px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.2);
         }
         .modal-header {
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--gold-light);
             padding: 1.5rem;
             background: var(--surface-light);
         }
@@ -253,45 +380,33 @@
             font-family: 'Prata', serif;
             letter-spacing: 1px;
         }
-        .btn-close {
-            filter: none;
-            opacity: 0.8;
-        }
-        .modal-body {
-            padding: 2rem;
-        }
         .payment-img {
             max-width: 100%;
             height: auto;
-            border: 2px dashed var(--gold);
+            border: 3px dashed var(--gold);
             padding: 0.5rem;
             margin-bottom: 1.5rem;
             background: #fafafa;
-        }
-        .instruction-text {
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .instruction-sub {
-            color: var(--soft-gray);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            border-radius: 8px;
         }
 
-        /* --- Footer --- */
+        /* --- Footer with Ankit credit --- */
         footer {
             background: white;
             border-top: 1px solid var(--border-light) !important;
             color: var(--soft-gray);
+            position: relative;
+        }
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         @media (max-width: 768px) {
             .hero { text-align: center; }
             .hero-title { font-size: 3.2rem; }
-            .navbar-brand { font-size: 1.2rem; }
+            .hero-sub:after { margin-left: auto; margin-right: auto; }
             .btn-luxury, .btn-outline-luxury { padding: 12px 24px; }
-            .nav-logo img { height: 32px; }
         }
     </style>
 </head>
@@ -312,7 +427,7 @@
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Treatments</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <!-- Instagram link added as an icon -->
+                    <!-- Instagram link as icon + text -->
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.instagram.com/hemadentalvlog?igsh=MWpycHl1OGV1OXlubA==" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i><span class="d-none d-lg-inline"> Insta</span>
@@ -331,14 +446,18 @@
             <div class="row">
                 <div class="col-lg-10" data-aos="fade-up" data-aos-duration="1200">
                     <span class="hero-sub">Haldwani's Elite Dental Studio</span>
-                    <h1 class="hero-title">EXPERIENCE THE <br>ART OF DENTISTRY.</h1>
-                    <p class="lead mb-5" style="max-width: 600px; color: var(--soft-gray);">Where cutting-edge technology meets bespoke aesthetic care. Your journey to a perfect smile starts here.</p>
+                    <h1 class="hero-title">Experience The <br>Art Of Dentistry.</h1>
+                    <p class="lead mb-5" style="max-width: 600px;">Where cutting-edge technology meets bespoke aesthetic care. Your journey to a perfect smile starts here.</p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
                         <a href="https://wa.me/918192876397" class="btn-luxury">BOOK APPOINTMENT</a>
                         <a href="#" class="btn-outline-luxury" data-bs-toggle="modal" data-bs-target="#consultModal">ONLINE CONSULT</a>
-                        <!-- YouTube Subscribe Button (opens channel) -->
+                        <!-- YouTube Subscribe Button -->
                         <a href="https://youtube.com/@hemadental?si=0IjBM7YQBAzlrj2F" class="btn-outline-luxury" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-youtube me-2"></i>SUBSCRIBE
+                        </a>
+                        <!-- Instagram Button added below Book Appointment -->
+                        <a href="https://www.instagram.com/hemadentalvlog?igsh=MWpycHl1OGV1OXlubA==" class="btn-outline-luxury" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram me-2"></i>INSTAGRAM
                         </a>
                     </div>
                 </div>
@@ -441,7 +560,7 @@
     </a>
 
     <footer class="py-5 text-center">
-        <p class="small mb-0" style="color: var(--soft-gray);">© 2026 HEMA DENTAL CLINIC | DESIGNED BY ANKIT NEGI</p>
+        <p class="small mb-0" style="color: var(--soft-gray);">© 2026 HEMA DENTAL CLINIC | CREATED BY ANKIT</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
